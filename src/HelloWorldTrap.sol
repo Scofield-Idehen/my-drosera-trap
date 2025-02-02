@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.12;
 
-import {ITrap} from "drosera-contracts/interfaces/ITrap.sol";
+import {ITrap} from "src/interfaces/ITrap.sol"; // must change the name from src to drosera-contracts
 
 struct CollectOutput {
     string text;

@@ -7,7 +7,7 @@ struct CollectOutput {
     string text;
 }
 
-contract HelloWorldTrap is ITrap{
+contract HelloWorldTrap is ITrap {
     constructor() {}
 
     function collect() external view returns (bytes memory) {
@@ -21,7 +21,7 @@ contract HelloWorldTrap is ITrap{
             CollectOutput memory output = abi.decode(data[i], (CollectOutput));
             if (
                 keccak256(abi.encodePacked(output.text)) !=
-                keccak256(abi.encodePacked("Hello World!"))
+                keccak256(abi.encodePacked("Hello World, this is scofield!"))
             ) {
                 return (true, bytes(abi.encode(output.text)));
             }

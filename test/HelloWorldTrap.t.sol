@@ -43,15 +43,16 @@ contract HelloWorldTrapTest is Test {
     }
 
     function test_HelloWorldTrap() public {
+        address owner = address(0x123); // Define the owner address
         bytes[] memory dataPoints = new bytes[](numBlocks);
 
         // Collect data points starting from the current block minus 'numBlocks'
         for (uint8 i = 0; i < numBlocks; i++) {
             // Advance to an older block
             vm.selectFork(forkIds[i]);
-            dataPoints[i] = new HelloWorldTrap().collect();
+            dataPoints[i] = new HelloWorldTrap(owner).collect();
         }
-        (bool shouldRespond, ) = new HelloWorldTrap().shouldRespond(dataPoints);
+        (bool shouldRespond, ) = new HelloWorldTrap(owner).shouldRespond(dataPoints);
         assertTrue(!shouldRespond);
     }
 }
